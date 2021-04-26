@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering.Universal.PostProcessing;
+using UnityEngine.Scripting;
 
 
 // Mercilessly cannibalised from the tutorial on https://github.com/yahiaetman/URPCustomPostProcessingStack
@@ -15,7 +16,7 @@ public class ScanlineEffect : VolumeComponent
 	public ClampedIntParameter rows = new ClampedIntParameter(0, 0, 10000);
 }
 
-[CustomPostProcess("Scanline", CustomPostProcessInjectionPoint.BeforePostProcess)]
+[CustomPostProcess("Scanline", CustomPostProcessInjectionPoint.BeforePostProcess), Preserve]
 public class ScanlineEffectRenderer : CustomPostProcessRenderer
 {
 	private ScanlineEffect m_VolumeComponent;
