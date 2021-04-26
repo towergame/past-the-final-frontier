@@ -34,11 +34,13 @@ public class ScanlineEffectRenderer : CustomPostProcessRenderer
 
 	public override ScriptableRenderPassInput input => ScriptableRenderPassInput.Color;
 
+	[Preserve]
 	public override void Initialize()
 	{
 		m_Material = CoreUtils.CreateEngineMaterial("Hidden/PostProcess/Scanline");
 	}
 
+	[Preserve]
 	public override bool Setup(ref RenderingData renderingData, CustomPostProcessInjectionPoint injectionPoint)
 	{
 		var stack = VolumeManager.instance.stack;
@@ -46,6 +48,7 @@ public class ScanlineEffectRenderer : CustomPostProcessRenderer
 		return m_VolumeComponent.lines.value > 0;
 	}
 
+	[Preserve]
 	public override void Render(CommandBuffer cmd, RenderTargetIdentifier source, RenderTargetIdentifier destination, ref RenderingData renderingData, CustomPostProcessInjectionPoint injectionPoint)
 	{
 		if (m_Material != null)
